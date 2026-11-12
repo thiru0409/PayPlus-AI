@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#f6f8fb">
+	<title>PayPlus AI | Assistant</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<script src="{{ url_for('static', filename='js/preferences.js') }}" defer></script>
+	<script src="{{ url_for('static', filename='js/brand.js') }}" defer></script>
+	<script src="{{ url_for('static', filename='js/pet.js') }}" defer></script>
+	<script src="{{ url_for('static', filename='js/dashboard.js') }}" defer></script>
+	<script src="{{ url_for('static', filename='js/assistant.js') }}" defer></script>
+</head>
+<body>
+	<div class="app-shell" id="appShell">
+		<aside class="sidebar" id="sidebar" aria-label="Main sidebar">
+			<a class="brand" href="/" aria-label="PayPlus AI overview"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8 23.5V8.5h8.2a5 5 0 0 1 0 10H8m9.3-3.2 6.7 8.2"/></svg></span><span class="brand-copy"><strong>payplus</strong><span>AI FINANCE</span></span></a>
+			<div class="workspace-label">WORKSPACE</div>
+			<nav class="navigation" aria-label="Main navigation">
+				<a class="nav-link" href="/" title="Overview"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1"/><rect x="13.5" y="3.5" width="7" height="7" rx="1"/><rect x="3.5" y="13.5" width="7" height="7" rx="1"/><rect x="13.5" y="13.5" width="7" height="7" rx="1"/></svg><span class="nav-label">Overview</span></a>
+				<a class="nav-link" href="{{ url_for('transactions_page') }}" title="Transactions"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16M4 12h16M4 17.5h10"/><circle cx="7" cy="6.5" r="1"/><circle cx="16" cy="12" r="1"/><circle cx="11" cy="17.5" r="1"/></svg><span class="nav-label">Transactions</span></a>
+				<a class="nav-link" href="{{ url_for('analytics_page') }}" title="Analytics"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V12m5 7.5V5m5 14.5v-9m5 9V8"/></svg><span class="nav-label">Analytics</span></a>
+				<a class="nav-link" href="{{ url_for('security_page') }}" title="Security and Risk"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 19 6v5.3c0 4.2-2.8 7.6-7 9.2-4.2-1.6-7-5-7-9.2V6l7-2.5Z"/><path d="M12 8v4m0 3h.01"/></svg><span class="nav-label">Security &amp; Risk</span></a>
+				<a class="nav-link is-current" href="{{ url_for('assistant_page') }}" aria-current="page" title="AI Assistant"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="m19 15 .9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z"/></svg><span class="nav-label">AI Assistant</span></a>
+			</nav>
+			<div class="sidebar-footer"><a class="nav-link settings-link" href="{{ url_for('settings_page') }}" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9m4 0h3M4 17h3m4 0h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg><span class="nav-label">Settings</span></a><div class="privacy-note"><span class="privacy-dot"></span><span>Local data stays on this device</span></div></div>
+		</aside>
+		<button class="sidebar-backdrop" id="sidebarBackdrop" type="button" aria-label="Close navigation" hidden></button>
+		<main class="main-content">
+			<header class="topbar">
+				<div class="header-left"><button class="icon-button menu-button" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar" title="Open navigation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16M4 12h16M4 17.5h16"/></svg></button><button class="icon-button collapse-button" id="collapseToggle" type="button" aria-label="Collapse sidebar" aria-expanded="true" aria-controls="sidebar" title="Collapse sidebar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M9 5v14m6-10-2 2 2 2"/></svg></button><div><p class="header-kicker">PAYPLUS AI</p><p class="header-title">Assistant</p></div></div>
+				<div class="header-actions"><time class="today-label" id="todayLabel"></time><div class="notification-wrap"><button class="icon-button notification-button" id="notificationToggle" type="button" aria-label="Notifications" aria-expanded="false" aria-controls="notificationPanel" title="Notifications"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9m-8 12h4"/></svg></button><div class="notification-panel" id="notificationPanel" hidden><strong>You're all caught up</strong><p>There are no notifications to review.</p></div></div><div class="profile-chip" aria-label="Local workspace profile"><span class="profile-avatar" aria-hidden="true">P</span><span class="profile-name">Local workspace</span></div></div>
+			</header>
+
+			<div class="page-content assistant-page">
+				<section class="welcome assistant-welcome" aria-labelledby="page-title"><div><p class="eyebrow">YOUR PAYPLUS PET</p><h1 id="page-title">Money &amp; Shopping Assistant</h1><p class="welcome-copy">Ask about your records or find products across global marketplaces.</p></div><span class="assistant-mode"><span class="assistant-mode-dot"></span>Finance + shopping</span></section>
+				<div class="assistant-disclosure" role="note"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg><span>The PayPlus Pet uses local summaries and marketplace search links. Check the seller, price, shipping, and PayPal availability before buying.</span></div>
+
+				<section class="surface chat-surface" aria-label="Financial Assistant conversation">
+					<div class="chat-heading"><div class="chat-identity"><span class="chat-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/></svg></span><div><h2>PayPlus Assistant</h2><p>Answers based on your local records</p></div></div><button class="clear-chat-button" id="clearConversation" type="button" title="Clear this conversation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16m-10 4v6m4-6v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg><span>Clear conversation</span></button></div>
+					<div class="chat-history" id="chatHistory" role="log" aria-label="Conversation" aria-live="polite" aria-relevant="additions">
+						<div class="chat-message assistant-message"><span class="chat-avatar" aria-hidden="true">P</span><div class="message-body"><span class="message-author">PayPlus Assistant</span><p>I can help you understand your saved transaction records. Choose a question below or ask one in your own words.</p><span class="message-source">Local data summary</span></div></div>
+					</div>
+					<div class="chat-loading" id="chatLoading" role="status" hidden><span class="loading-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>Checking your saved records&hellip;</span></div>
+					<div class="chat-error" id="chatError" role="alert" hidden></div>
+					<div class="suggestion-heading"><span>TRY ASKING</span><span>Questions use your current saved records</span></div>
+					<div class="suggestion-list" id="suggestedQuestions">
+						<button class="suggestion-chip" type="button" data-question="How much did I spend this month?">How much did I spend this month?</button>
+						<button class="suggestion-chip" type="button" data-question="Show my recent transactions.">Show my recent transactions</button>
+						<button class="suggestion-chip" type="button" data-question="Compare this month with last month.">Compare this month with last month</button>
+						<button class="suggestion-chip" type="button" data-question="What is my transaction volume?">What is my transaction volume?</button>
+						<button class="suggestion-chip" type="button" data-question="Are there any security alerts?">Are there any security alerts?</button>
+						<button class="suggestion-chip" type="button" data-question="Summarize my financial activity.">Summarize my financial activity</button>
+					</div>
+					<form class="chat-form" id="chatForm" novalidate><label class="visually-hidden" for="chatInput">Ask PayPlus Assistant a question</label><textarea id="chatInput" name="question" rows="2" maxlength="300" placeholder="Ask about a saved transaction or total..." required></textarea><div class="chat-form-footer"><span id="chatInputHint">Up to 300 characters</span><button class="send-button" id="sendMessage" type="submit" aria-label="Send question" title="Send question"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 3-7.5 18-3.2-7.3L3 10.5 21 3Zm0 0L10.3 13.7"/></svg></button></div></form>
+				</section>
+				<footer class="page-footer"><span>PayPlus AI</span><span>Local summaries are not financial advice.</span></footer>
+			</div>
+		</main>
+	</div>
+</body>
+</html>

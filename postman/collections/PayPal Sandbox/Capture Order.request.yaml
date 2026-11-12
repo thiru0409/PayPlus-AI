@@ -1,0 +1,10 @@
+$kind: http-request
+name: Capture Order
+order: 3000
+method: POST
+url: '{{base_url}}/v2/checkout/orders/{{order_id}}/capture'
+headers:
+  - key: Content-Type
+    value: application/json
+  - key: Authorization
+    value: 'Bearer {{access_token}}'

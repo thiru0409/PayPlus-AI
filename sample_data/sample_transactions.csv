@@ -1,0 +1,8 @@
+transaction_date,description,amount,currency,category
+2026-11-01,Coffee shop,8.50,USD,Food
+2026-11-02,Grocery market,64.20,USD,Food
+2026-11-03,Monthly rent,1200.00,USD,Housing
+2026-11-04,Gift card purchase,75.00,USD,Shopping
+2026-11-05,Online subscription,19.99,USD,Subscriptions
+2026-11-06,Repeated payment,42.00,USD,Shopping
+2026-11-06,Repeated payment,42.00,USD,Shopping

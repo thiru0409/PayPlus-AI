@@ -1,0 +1,12 @@
+name: PayPal Sandbox
+values:
+  - key: client_id
+    value: ''
+  - key: client_secret
+    value: ''
+  - key: base_url
+    value: 'https://api-m.sandbox.paypal.com'
+  - key: access_token
+    value: ''
+  - key: order_id
+    value: ''

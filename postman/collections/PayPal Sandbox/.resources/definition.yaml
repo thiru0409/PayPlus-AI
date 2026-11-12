@@ -1,0 +1,5 @@
+$kind: collection
+name: PayPal Sandbox
+description: |-
+  PayPal Sandbox collection for testing Orders API payments.
+  Uses sandbox credentials from the PayPal Sandbox environment.

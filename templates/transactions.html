@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#f6f8fb">
+	<title>PayPlus AI | Transactions</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<script src="{{ url_for('static', filename='js/preferences.js') }}" defer></script>
+	<script src="{{ url_for('static', filename='js/brand.js') }}" defer></script>
+	<script src="{{ url_for('static', filename='js/pet.js') }}" defer></script>
+	<script src="{{ url_for('static', filename='js/dashboard.js') }}" defer></script>
+	<script src="{{ url_for('static', filename='js/transactions.js') }}" defer></script>
+</head>
+<body>
+	<div class="app-shell" id="appShell">
+		<aside class="sidebar" id="sidebar" aria-label="Main sidebar">
+			<a class="brand" href="/" aria-label="PayPlus AI overview">
+				<span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8 23.5V8.5h8.2a5 5 0 0 1 0 10H8m9.3-3.2 6.7 8.2"/></svg></span>
+				<span class="brand-copy"><strong>payplus</strong><span>AI FINANCE</span></span>
+			</a>
+			<div class="workspace-label">WORKSPACE</div>
+			<nav class="navigation" aria-label="Main navigation">
+				<a class="nav-link" href="/" title="Overview">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1"/><rect x="13.5" y="3.5" width="7" height="7" rx="1"/><rect x="3.5" y="13.5" width="7" height="7" rx="1"/><rect x="13.5" y="13.5" width="7" height="7" rx="1"/></svg>
+					<span class="nav-label">Overview</span>
+				</a>
+				<a class="nav-link is-current" href="{{ url_for('transactions_page') }}" aria-current="page" title="Transactions">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16M4 12h16M4 17.5h10"/><circle cx="7" cy="6.5" r="1"/><circle cx="16" cy="12" r="1"/><circle cx="11" cy="17.5" r="1"/></svg>
+					<span class="nav-label">Transactions</span>
+				</a>
+				<a class="nav-link" href="{{ url_for('analytics_page') }}" title="Analytics"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V12m5 7.5V5m5 14.5v-9m5 9V8"/></svg><span class="nav-label">Analytics</span></a>
+				<a class="nav-link" href="{{ url_for('security_page') }}" title="Security and Risk"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 19 6v5.3c0 4.2-2.8 7.6-7 9.2-4.2-1.6-7-5-7-9.2V6l7-2.5Z"/><path d="M12 8v4m0 3h.01"/></svg><span class="nav-label">Security &amp; Risk</span></a>
+				<a class="nav-link" href="{{ url_for('assistant_page') }}" title="AI Assistant"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="m19 15 .9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z"/></svg><span class="nav-label">AI Assistant</span></a>
+			</nav>
+			<div class="sidebar-footer">
+				<a class="nav-link settings-link" href="{{ url_for('settings_page') }}" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9m4 0h3M4 17h3m4 0h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg><span class="nav-label">Settings</span></a>
+				<div class="privacy-note"><span class="privacy-dot"></span><span>Local data stays on this device</span></div>
+			</div>
+		</aside>
+		<button class="sidebar-backdrop" id="sidebarBackdrop" type="button" aria-label="Close navigation" hidden></button>
+
+		<main class="main-content">
+			<header class="topbar">
+				<div class="header-left">
+					<button class="icon-button menu-button" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar" title="Open navigation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16M4 12h16M4 17.5h16"/></svg></button>
+					<button class="icon-button collapse-button" id="collapseToggle" type="button" aria-label="Collapse sidebar" aria-expanded="true" aria-controls="sidebar" title="Collapse sidebar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M9 5v14m6-10-2 2 2 2"/></svg></button>
+					<div><p class="header-kicker">PAYPLUS AI</p><p class="header-title">Transactions</p></div>
+				</div>
+				<div class="header-actions">
+					<time class="today-label" id="todayLabel"></time>
+					<div class="notification-wrap">
+						<button class="icon-button notification-button" id="notificationToggle" type="button" aria-label="Notifications" aria-expanded="false" aria-controls="notificationPanel" title="Notifications"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9m-8 12h4"/></svg></button>
+						<div class="notification-panel" id="notificationPanel" hidden><strong>You're all caught up</strong><p>There are no notifications to review.</p></div>
+					</div>
+					<div class="profile-chip" aria-label="Local workspace profile"><span class="profile-avatar" aria-hidden="true">P</span><span class="profile-name">Local workspace</span></div>
+				</div>
+			</header>
+
+			<div class="page-content transactions-page">
+				<section class="transactions-welcome" aria-labelledby="page-title">
+					<div><p class="eyebrow">YOUR RECORDS</p><h1 id="page-title">Transactions</h1><p class="welcome-copy">Find, review, and organize the payment records saved in this workspace.</p></div>
+					<div class="import-actions">
+						<input id="csvFile" class="visually-hidden" type="file" accept=".csv,text/csv" aria-label="Choose a CSV file">
+						<button class="primary-button" id="openImportButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4m-4 4 4-4 4 4M5 14v5h14v-5"/></svg><span>Import CSV</span></button>
+					</div>
+				</section>
+
+				<section class="records-overview" aria-label="Transaction count">
+					<div><span class="overview-count-label">ALL TRANSACTIONS</span><strong id="transactionTotal">&mdash;</strong></div>
+					<p>Records from CSV imports are stored locally on this device.</p>
+				</section>
+
+				<section class="surface filters-surface" aria-labelledby="filters-title">
+					<div class="filters-heading"><div><p class="section-eyebrow">FIND A RECORD</p><h2 id="filters-title">Search and filters</h2></div><button class="clear-filters" id="clearFilters" type="button">Clear filters</button></div>
+					<form id="transactionFilters" novalidate>
+						<div class="filter-grid">
+							<label class="filter-field search-field"><span>Search by ID or merchant</span><span class="search-input-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m16 16 4.5 4.5"/></svg><input id="searchInput" name="q" type="search" maxlength="100" placeholder="Try an ID or merchant name" autocomplete="off"></span></label>
+							<label class="filter-field"><span>From date</span><input id="dateFrom" name="date_from" type="date"></label>
+							<label class="filter-field"><span>To date</span><input id="dateTo" name="date_to" type="date"></label>
+							<label class="filter-field"><span>Minimum amount</span><input id="amountMin" name="amount_min" type="number" step="any" inputmode="decimal" placeholder="Any"></label>
+							<label class="filter-field"><span>Maximum amount</span><input id="amountMax" name="amount_max" type="number" step="any" inputmode="decimal" placeholder="Any"></label>
+							<label class="filter-field status-field"><span>Status</span><select id="statusFilter" name="status" disabled aria-describedby="statusHelp"><option value="">Not stored in this database</option></select><small id="statusHelp">Status values are not available for current records.</small></label>
+							<label class="filter-field sort-field"><span>Sort by</span><select id="sortOrder" name="sort"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="amount_high">Highest amount</option><option value="amount_low">Lowest amount</option></select></label>
+						</div>
+						<div class="filter-feedback" id="filterError" role="alert" hidden></div>
+					</form>
+				</section>
+
+				<div class="csv-guidance"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg><span><strong>CSV format:</strong> use <code>transaction_date, description, amount, currency</code>; <code>category</code> is optional. Dates should use YYYY-MM-DD. Status and payment method are not stored yet.</span></div>
+				<div class="import-result" id="importResult" role="status" aria-live="polite" hidden></div>
+				<div class="transaction-toolbar"><p id="resultSummary" role="status" aria-live="polite">Loading transactions&hellip;</p><span id="loadingIndicator" class="loading-indicator" hidden>Updating&hellip;</span></div>
+
+				<section class="surface records-surface" aria-label="Transaction results">
+					<div class="table-scroll" id="tableScroll" hidden>
+						<table class="records-table">
+							<thead><tr><th scope="col">ID</th><th scope="col">Merchant / description</th><th scope="col">Date</th><th scope="col">Amount</th><th scope="col">Currency</th><th scope="col">Status</th><th scope="col">Method</th><th scope="col"><span class="visually-hidden">Details</span></th></tr></thead>
+							<tbody id="transactionRows"></tbody>
+						</table>
+					</div>
+					<div class="transactions-empty" id="transactionsEmpty"><span class="empty-record-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4.5h14v15H5zM8 8h8m-8 4h8m-8 4h5"/></svg></span><strong id="emptyTitle">Loading transactions</strong><span id="emptyDescription">Checking your local records.</span></div>
+				</section>
+				<footer class="page-footer"><span>PayPlus AI</span><span>Private by design. Your records stay local.</span></footer>
+			</div>
+		</main>
+	</div>
+
+	<dialog class="details-dialog" id="transactionDialog" aria-labelledby="detailsTitle">
+		<div class="details-dialog-header"><div><p class="section-eyebrow">RECORD DETAILS</p><h2 id="detailsTitle">Transaction</h2></div><button class="icon-button" id="closeDetails" type="button" aria-label="Close transaction details" title="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+		<div class="details-content" id="detailsContent"><p>Loading transaction details&hellip;</p></div>
+	</dialog>
+</body>
+</html>

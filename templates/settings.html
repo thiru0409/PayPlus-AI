@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#f6f8fb">
+	<title>PayPlus AI | Settings</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<script src="{{ url_for('static', filename='js/preferences.js') }}" defer></script>
+	<script src="{{ url_for('static', filename='js/brand.js') }}" defer></script>
+	<script src="{{ url_for('static', filename='js/pet.js') }}" defer></script>
+	<script src="{{ url_for('static', filename='js/dashboard.js') }}" defer></script>
+	<script src="{{ url_for('static', filename='js/settings.js') }}" defer></script>
+</head>
+<body>
+	<div class="app-shell" id="appShell">
+		<aside class="sidebar" id="sidebar" aria-label="Main sidebar">
+			<a class="brand" href="/" aria-label="PayPlus AI overview"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8 23.5V8.5h8.2a5 5 0 0 1 0 10H8m9.3-3.2 6.7 8.2"/></svg></span><span class="brand-copy"><strong>payplus</strong><span>AI FINANCE</span></span></a>
+			<div class="workspace-label">WORKSPACE</div>
+			<nav class="navigation" aria-label="Main navigation">
+				<a class="nav-link" href="/" title="Overview"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1"/><rect x="13.5" y="3.5" width="7" height="7" rx="1"/><rect x="3.5" y="13.5" width="7" height="7" rx="1"/><rect x="13.5" y="13.5" width="7" height="7" rx="1"/></svg><span class="nav-label">Overview</span></a>
+				<a class="nav-link" href="{{ url_for('transactions_page') }}" title="Transactions"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16M4 12h16M4 17.5h10"/><circle cx="7" cy="6.5" r="1"/><circle cx="16" cy="12" r="1"/><circle cx="11" cy="17.5" r="1"/></svg><span class="nav-label">Transactions</span></a>
+				<a class="nav-link" href="{{ url_for('analytics_page') }}" title="Analytics"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V12m5 7.5V5m5 14.5v-9m5 9V8"/></svg><span class="nav-label">Analytics</span></a>
+				<a class="nav-link" href="{{ url_for('security_page') }}" title="Security and Risk"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 19 6v5.3c0 4.2-2.8 7.6-7 9.2-4.2-1.6-7-5-7-9.2V6l7-2.5Z"/><path d="M12 8v4m0 3h.01"/></svg><span class="nav-label">Security &amp; Risk</span></a>
+				<a class="nav-link" href="{{ url_for('assistant_page') }}" title="AI Assistant"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="m19 15 .9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z"/></svg><span class="nav-label">AI Assistant</span></a>
+			</nav>
+			<div class="sidebar-footer"><a class="nav-link settings-link is-current" href="{{ url_for('settings_page') }}" aria-current="page" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9m4 0h3M4 17h3m4 0h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg><span class="nav-label">Settings</span></a><div class="privacy-note"><span class="privacy-dot"></span><span>Local data stays on this device</span></div></div>
+		</aside>
+		<button class="sidebar-backdrop" id="sidebarBackdrop" type="button" aria-label="Close navigation" hidden></button>
+		<main class="main-content">
+			<header class="topbar">
+				<div class="header-left"><button class="icon-button menu-button" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar" title="Open navigation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16M4 12h16M4 17.5h16"/></svg></button><button class="icon-button collapse-button" id="collapseToggle" type="button" aria-label="Collapse sidebar" aria-expanded="true" aria-controls="sidebar" title="Collapse sidebar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M9 5v14m6-10-2 2 2 2"/></svg></button><div><p class="header-kicker">PAYPLUS AI</p><p class="header-title">Settings</p></div></div>
+				<div class="header-actions"><time class="today-label" id="todayLabel"></time><div class="notification-wrap"><button class="icon-button notification-button" id="notificationToggle" type="button" aria-label="Notifications" aria-expanded="false" aria-controls="notificationPanel" title="Notifications"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9m-8 12h4"/></svg></button><div class="notification-panel" id="notificationPanel" hidden><strong>You're all caught up</strong><p>There are no notifications to review.</p></div></div><div class="profile-chip" aria-label="Local workspace profile"><span class="profile-avatar" aria-hidden="true">P</span><span class="profile-name">Local workspace</span></div></div>
+			</header>
+
+			<div class="page-content settings-page">
+				<section class="welcome settings-welcome" aria-labelledby="page-title"><div><p class="eyebrow">MAKE IT YOURS</p><h1 id="page-title">Personalize your dashboard</h1><p class="welcome-copy">Choose the colors, layout, and information that feel right for you.</p></div><span class="settings-saved" id="settingsSaved" role="status">Saved in this browser</span></section>
+				<div class="settings-notice"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg><span>Your preferences are saved in this browser only. They are not linked to an account or synced to other devices.</span></div>
+
+				<div class="settings-grid">
+					<section class="surface settings-section" aria-labelledby="appearanceTitle"><div class="settings-section-heading"><span class="settings-section-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17m0-8.5h8.5"/></svg></span><div><h2 id="appearanceTitle">Appearance</h2><p>Pick a theme and accent color.</p></div></div>
+						<label class="settings-control-row" for="themeChoice"><span><strong>Theme</strong><small>Choose light, dark, or follow your device.</small></span><select id="themeChoice"><option value="light">Light</option><option value="dark">Dark</option><option value="system">System default</option></select></label>
+						<div class="settings-control-row accent-row"><span><strong>Accent color</strong><small>Used for buttons, highlights, and charts.</small></span><div class="accent-options" role="group" aria-label="Accent color">
+							<button class="accent-option" type="button" data-accent-choice="blue" aria-label="Blue accent" title="Blue"><span class="accent-swatch swatch-blue"></span></button>
+							<button class="accent-option" type="button" data-accent-choice="purple" aria-label="Purple accent" title="Purple"><span class="accent-swatch swatch-purple"></span></button>
+							<button class="accent-option" type="button" data-accent-choice="green" aria-label="Green accent" title="Green"><span class="accent-swatch swatch-green"></span></button>
+							<button class="accent-option" type="button" data-accent-choice="orange" aria-label="Orange accent" title="Orange"><span class="accent-swatch swatch-orange"></span></button>
+						</div></div>
+					</section>
+
+					<section class="surface settings-section" aria-labelledby="layoutTitle"><div class="settings-section-heading"><span class="settings-section-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M9 4v16m5-11h3m-3 4h3"/></svg></span><div><h2 id="layoutTitle">Layout</h2><p>Adjust spacing and the information you see.</p></div></div>
+						<label class="settings-control-row" for="spacingChoice"><span><strong>Dashboard spacing</strong><small>Comfortable leaves more room. Compact fits more on screen.</small></span><select id="spacingChoice"><option value="comfortable">Comfortable</option><option value="compact">Compact</option></select></label>
+						<div class="settings-widget-list" id="widgetVisibility">
+							<label><input type="checkbox" data-widget-choice="financialSummary"><span><strong>Financial summary</strong><small>Transaction count and volume cards</small></span></label>
+							<label><input type="checkbox" data-widget-choice="monthlyAnalytics"><span><strong>Monthly analytics</strong><small>Recent transaction activity chart</small></span></label>
+							<label><input type="checkbox" data-widget-choice="recentTransactions"><span><strong>Recent transactions</strong><small>Your latest saved records</small></span></label>
+							<label><input type="checkbox" data-widget-choice="aiInsights"><span><strong>AI insights</strong><small>Availability note for assistant insights</small></span></label>
+							<label><input type="checkbox" data-widget-choice="securityAlerts"><span><strong>Security alerts</strong><small>Current risk monitoring status</small></span></label>
+						</div>
+						<div class="widget-order-block"><div class="widget-order-heading"><strong>Dashboard order</strong><small>Drag a section or use the arrow buttons to move it.</small></div><ol class="widget-order-list" id="widgetOrderList" aria-label="Dashboard section order">
+							<li draggable="true" data-widget-order="financialSummary"><span class="drag-handle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5h.01M16 5h.01M8 12h.01M16 12h.01M8 19h.01M16 19h.01"/></svg></span><span>Financial summary</span><button type="button" data-move="up" aria-label="Move Financial summary up" title="Move up"><svg viewBox="0 0 24 24"><path d="m7 14 5-5 5 5"/></svg></button><button type="button" data-move="down" aria-label="Move Financial summary down" title="Move down"><svg viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></svg></button></li>
+							<li draggable="true" data-widget-order="monthlyAnalytics"><span class="drag-handle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5h.01M16 5h.01M8 12h.01M16 12h.01M8 19h.01M16 19h.01"/></svg></span><span>Monthly analytics</span><button type="button" data-move="up" aria-label="Move Monthly analytics up" title="Move up"><svg viewBox="0 0 24 24"><path d="m7 14 5-5 5 5"/></svg></button><button type="button" data-move="down" aria-label="Move Monthly analytics down" title="Move down"><svg viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></svg></button></li>
+							<li draggable="true" data-widget-order="recentTransactions"><span class="drag-handle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5h.01M16 5h.01M8 12h.01M16 12h.01M8 19h.01M16 19h.01"/></svg></span><span>Recent transactions</span><button type="button" data-move="up" aria-label="Move Recent transactions up" title="Move up"><svg viewBox="0 0 24 24"><path d="m7 14 5-5 5 5"/></svg></button><button type="button" data-move="down" aria-label="Move Recent transactions down" title="Move down"><svg viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></svg></button></li>
+							<li draggable="true" data-widget-order="aiInsights"><span class="drag-handle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5h.01M16 5h.01M8 12h.01M16 12h.01M8 19h.01M16 19h.01"/></svg></span><span>AI insights</span><button type="button" data-move="up" aria-label="Move AI insights up" title="Move up"><svg viewBox="0 0 24 24"><path d="m7 14 5-5 5 5"/></svg></button><button type="button" data-move="down" aria-label="Move AI insights down" title="Move down"><svg viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></svg></button></li>
+							<li draggable="true" data-widget-order="securityAlerts"><span class="drag-handle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5h.01M16 5h.01M8 12h.01M16 12h.01M8 19h.01M16 19h.01"/></svg></span><span>Security alerts</span><button type="button" data-move="up" aria-label="Move Security alerts up" title="Move up"><svg viewBox="0 0 24 24"><path d="m7 14 5-5 5 5"/></svg></button><button type="button" data-move="down" aria-label="Move Security alerts down" title="Move down"><svg viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></svg></button></li>
+						</ol></div>
+					</section>
+
+					<section class="surface settings-section" aria-labelledby="chartsTitle"><div class="settings-section-heading"><span class="settings-section-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m5 14v-7m5 7V7"/></svg></span><div><h2 id="chartsTitle">Charts</h2><p>Choose your default dashboard chart style.</p></div></div><label class="settings-control-row" for="preferredChart"><span><strong>Chart type</strong><small>Used on Overview and as the starting style in Analytics.</small></span><select id="preferredChart"><option value="line">Line</option><option value="bar">Bar</option><option value="area">Area</option></select></label></section>
+
+					<section class="surface settings-section" aria-labelledby="accessibilityTitle"><div class="settings-section-heading"><span class="settings-section-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M8 13h8m-4-4v8"/></svg></span><div><h2 id="accessibilityTitle">Accessibility</h2><p>Make text and motion more comfortable.</p></div></div><label class="settings-control-row" for="fontSizeChoice"><span><strong>Font size</strong><small>Adjust the reading size throughout the app.</small></span><select id="fontSizeChoice"><option value="small">Small</option><option value="default">Default</option><option value="large">Large</option></select></label><label class="settings-toggle-row"><span><strong>Higher contrast</strong><small>Strengthen text and border contrast.</small></span><input id="highContrastChoice" type="checkbox"></label><label class="settings-toggle-row"><span><strong>Reduce motion</strong><small>Limit decorative movement and transitions.</small></span><input id="reducedMotionChoice" type="checkbox"></label></section>
+				</div>
+
+				<div class="settings-footer"><p id="settingsFeedback" role="status">Changes save automatically in this browser.</p><button class="reset-settings-button" id="resetSettings" type="button">Reset all settings</button></div>
+				<footer class="page-footer"><span>PayPlus AI</span><span>Preferences remain in this browser.</span></footer>
+			</div>
+		</main>
+	</div>
+</body>
+</html>

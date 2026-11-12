@@ -1,0 +1,38 @@
+$kind: http-request
+name: Create Order
+order: 2000
+method: POST
+url: '{{base_url}}/v2/checkout/orders'
+headers:
+  - key: Content-Type
+    value: application/json
+  - key: Authorization
+    value: 'Bearer {{access_token}}'
+body:
+  type: json
+  content: |-
+    {
+      "intent": "CAPTURE",
+      "purchase_units": [
+        {
+          "amount": {
+            "currency_code": "USD",
+            "value": "10.00"
+          }
+        }
+      ],
+      "application_context": {
+        "return_url": "https://example.com/paypal-return",
+        "cancel_url": "https://example.com/paypal-cancel",
+        "brand_name": "Sandbox Test",
+        "user_action": "PAY_NOW"
+      }
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const json = pm.response.json();
+      if (json.id) {
+          pm.environment.set("order_id", json.id);
+      }

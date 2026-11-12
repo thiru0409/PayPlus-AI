@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#f6f8fb">
+	<title>PayPlus AI | Security &amp; Risk</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<script src="{{ url_for('static', filename='js/preferences.js') }}" defer></script>
+	<script src="{{ url_for('static', filename='js/brand.js') }}" defer></script>
+	<script src="{{ url_for('static', filename='js/pet.js') }}" defer></script>
+	<script src="{{ url_for('static', filename='js/dashboard.js') }}" defer></script>
+	<script src="{{ url_for('static', filename='js/security.js') }}" defer></script>
+</head>
+<body>
+	<div class="app-shell" id="appShell">
+		<aside class="sidebar" id="sidebar" aria-label="Main sidebar">
+			<a class="brand" href="/" aria-label="PayPlus AI overview"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8 23.5V8.5h8.2a5 5 0 0 1 0 10H8m9.3-3.2 6.7 8.2"/></svg></span><span class="brand-copy"><strong>payplus</strong><span>AI FINANCE</span></span></a>
+			<div class="workspace-label">WORKSPACE</div>
+			<nav class="navigation" aria-label="Main navigation">
+				<a class="nav-link" href="/" title="Overview"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1"/><rect x="13.5" y="3.5" width="7" height="7" rx="1"/><rect x="3.5" y="13.5" width="7" height="7" rx="1"/><rect x="13.5" y="13.5" width="7" height="7" rx="1"/></svg><span class="nav-label">Overview</span></a>
+				<a class="nav-link" href="{{ url_for('transactions_page') }}" title="Transactions"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16M4 12h16M4 17.5h10"/><circle cx="7" cy="6.5" r="1"/><circle cx="16" cy="12" r="1"/><circle cx="11" cy="17.5" r="1"/></svg><span class="nav-label">Transactions</span></a>
+				<a class="nav-link" href="{{ url_for('analytics_page') }}" title="Analytics"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V12m5 7.5V5m5 14.5v-9m5 9V8"/></svg><span class="nav-label">Analytics</span></a>
+				<a class="nav-link is-current" href="{{ url_for('security_page') }}" aria-current="page" title="Security and Risk"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 19 6v5.3c0 4.2-2.8 7.6-7 9.2-4.2-1.6-7-5-7-9.2V6l7-2.5Z"/><path d="M12 8v4m0 3h.01"/></svg><span class="nav-label">Security &amp; Risk</span></a>
+				<a class="nav-link" href="{{ url_for('assistant_page') }}" title="AI Assistant"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="m19 15 .9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z"/></svg><span class="nav-label">AI Assistant</span></a>
+			</nav>
+			<div class="sidebar-footer"><a class="nav-link settings-link" href="{{ url_for('settings_page') }}" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9m4 0h3M4 17h3m4 0h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg><span class="nav-label">Settings</span></a><div class="privacy-note"><span class="privacy-dot"></span><span>Local data stays on this device</span></div></div>
+		</aside>
+		<button class="sidebar-backdrop" id="sidebarBackdrop" type="button" aria-label="Close navigation" hidden></button>
+		<main class="main-content">
+			<header class="topbar">
+				<div class="header-left"><button class="icon-button menu-button" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar" title="Open navigation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16M4 12h16M4 17.5h16"/></svg></button><button class="icon-button collapse-button" id="collapseToggle" type="button" aria-label="Collapse sidebar" aria-expanded="true" aria-controls="sidebar" title="Collapse sidebar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M9 5v14m6-10-2 2 2 2"/></svg></button><div><p class="header-kicker">PAYPLUS AI</p><p class="header-title">Security &amp; Risk</p></div></div>
+				<div class="header-actions"><time class="today-label" id="todayLabel"></time><div class="notification-wrap"><button class="icon-button notification-button" id="notificationToggle" type="button" aria-label="Notifications" aria-expanded="false" aria-controls="notificationPanel" title="Notifications"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9m-8 12h4"/></svg></button><div class="notification-panel" id="notificationPanel" hidden><strong>You're all caught up</strong><p>There are no notifications to review.</p></div></div><div class="profile-chip" aria-label="Local workspace profile"><span class="profile-avatar" aria-hidden="true">P</span><span class="profile-name">Local workspace</span></div></div>
+			</header>
+
+			<div class="page-content security-page">
+				<section class="welcome security-welcome" aria-labelledby="page-title"><div><p class="eyebrow">ACCOUNT SAFETY</p><h1 id="page-title">Security &amp; Risk</h1><p class="welcome-copy">Review explainable local screening scores for your saved records.</p></div><span class="engine-state"><span class="engine-state-dot"></span>Local model active</span></section>
+
+				<section class="risk-notice" role="status"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5m0 3h.01"/></svg><div><strong>Local screening model is active</strong><p>Scores are informational signals for manual review, not fraud decisions or financial advice.</p></div></section>
+				<div class="security-error" id="securityError" role="alert" hidden></div>
+
+				<section class="metrics-grid risk-metrics" aria-label="Security summary">
+					<article class="metric-card"><div class="metric-topline"><span class="metric-icon icon-amber"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 21 20H3l9-16.5Z"/><path d="M12 9v4m0 3h.01"/></svg></span><span class="metric-label">RISK MONITORING</span></div><p class="metric-value risk-not-active">Active</p><p class="metric-note">Explainable local screening rules</p></article>
+					<article class="metric-card"><div class="metric-topline"><span class="metric-icon icon-slate"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v14H5zM8 9h8m-8 4h5"/></svg></span><span class="metric-label">ALERTS TO REVIEW</span></div><p class="metric-value risk-not-active" id="riskAlertCount">&mdash;</p><p class="metric-note">Medium and high screening signals</p></article>
+					<article class="metric-card"><div class="metric-topline"><span class="metric-icon icon-blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5.5h14v13H5zM8 9h8m-8 3.5h5m-5 3.5h8"/></svg></span><span class="metric-label">LOCAL RECORDS</span></div><p class="metric-value" id="riskTransactionCount">&mdash;</p><p class="metric-note">Available for manual review</p></article>
+				</section>
+
+				<div class="security-detail-grid">
+					<section class="surface risk-levels-surface" aria-labelledby="riskLevelsTitle"><div class="surface-heading"><div><p class="section-eyebrow">RISK LEVELS</p><h2 id="riskLevelsTitle">Local screening labels</h2></div><span class="security-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.3c0 4.2-2.8 7.6-7 9.2-4.2-1.6-7-5-7-9.2V6l7-2.5Z"/><path d="M12 8v4m0 3h.01"/></svg></span></div><p class="risk-level-copy">Each record receives a 0–100 screening score with reasons you can review. The model does not confirm fraud.</p><div class="risk-level-legend"><span>Low</span><span>Medium</span><span>High</span><span class="legend-unavailable">Informational</span></div></section>
+					<section class="surface alert-history-surface" aria-labelledby="alertHistoryTitle"><div class="surface-heading"><div><p class="section-eyebrow">ALERT HISTORY</p><h2 id="alertHistoryTitle">No alert data available</h2></div></div><div class="alert-history-empty"><span class="chart-empty-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.3c0 4.2-2.8 7.6-7 9.2-4.2-1.6-7-5-7-9.2V6l7-2.5Z"/><path d="M12 8v4m0 3h.01"/></svg></span><strong>Monitoring has not been activated</strong><span>There are no generated alerts to review.</span></div></section>
+				</div>
+
+				<section class="surface review-surface" aria-labelledby="reviewTransactionsTitle"><div class="surface-heading review-heading"><div><p class="section-eyebrow">MANUAL REVIEW</p><h2 id="reviewTransactionsTitle">Recent transactions</h2><p class="section-description">These are real saved records, shown without a risk score.</p></div><span class="period-pill" id="reviewRecordCount">LOADING</span></div><div class="table-scroll" id="reviewTableWrap" hidden><table class="records-table"><thead><tr><th scope="col">ID</th><th scope="col">Description</th><th scope="col">Date</th><th scope="col">Amount</th><th scope="col">Risk assessment</th><th scope="col"><span class="visually-hidden">Details</span></th></tr></thead><tbody id="reviewRows"></tbody></table></div><div class="risk-records-empty" id="reviewEmpty"><strong id="reviewEmptyTitle">Loading local records</strong><span id="reviewEmptyCopy">Checking the transaction database.</span></div></section>
+
+				<section class="risk-guidance"><div><p class="section-eyebrow">IF SOMETHING LOOKS UNFAMILIAR</p><h2>Check the original payment source</h2><p>PayPlus AI has not assessed these transactions. For a concern, review the payment directly with the platform or provider that recorded it.</p></div><a class="secondary-link" href="{{ url_for('transactions_page') }}">Open transactions <span aria-hidden="true">&rarr;</span></a></section>
+				<footer class="page-footer"><span>PayPlus AI</span><span>No automated risk decisions are being made.</span></footer>
+			</div>
+		</main>
+	</div>
+	<dialog class="details-dialog" id="securityDetailsDialog" aria-labelledby="securityDetailsTitle"><div class="details-dialog-header"><div><p class="section-eyebrow">UNSCORED RECORD</p><h2 id="securityDetailsTitle">Transaction</h2></div><button class="icon-button" id="closeSecurityDetails" type="button" aria-label="Close transaction details" title="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div class="details-content" id="securityDetailsContent"><p>Choose a record to review.</p></div></dialog>
+</body>
+</html>
