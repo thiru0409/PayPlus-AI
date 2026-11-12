@@ -55,7 +55,10 @@ petForm.addEventListener("submit", async (event) => {
 			link.href = result.url;
 			link.target = "_blank";
 			link.rel = "noopener noreferrer";
-			link.textContent = `${result.marketplace}: open listings`;
+		link.innerHTML = `<strong></strong><b></b><span></span>`;
+		link.querySelector("strong").textContent = result.title;
+		link.querySelector("b").textContent = result.price || "Price shown on listing";
+		link.querySelector("span").textContent = result.paypal_note;
 			petMessages.append(link);
 		}
 	} catch (error) {

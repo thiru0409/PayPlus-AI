@@ -979,22 +979,26 @@
 .payplus-pet-button { position: fixed; right: 22px; bottom: 22px; z-index: 50; display: grid; place-items: center; width: 52px; height: 52px; border: 0; border-radius: 50%; color: white; background: #3569c8; box-shadow: 0 8px 24px rgb(35 71 140 / 28%); cursor: pointer; }
 .payplus-pet-button svg { width: 27px; height: 27px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
 .payplus-pet-button:hover { transform: translateY(-2px); }
-.payplus-pet-panel { position: fixed; right: 22px; bottom: 86px; z-index: 50; display: grid; width: min(340px, calc(100vw - 28px)); overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: white; box-shadow: 0 18px 50px rgb(20 37 61 / 22%); }
-.payplus-pet-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 15px; color: white; background: #3569c8; }
+.payplus-pet-panel { position: fixed; right: 22px; bottom: 86px; z-index: 50; display: grid; width: min(430px, calc(100vw - 28px)); overflow: hidden; border: 1px solid #33435d; border-radius: 16px; background: #111b2b; box-shadow: 0 20px 60px rgb(6 12 24 / 42%); }
+.payplus-pet-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px; color: #f5f8ff; background: linear-gradient(135deg, #1b2c48, #243d68); }
 .payplus-pet-heading div { display: grid; gap: 2px; }
-.payplus-pet-heading strong { font-size: 12px; }
-.payplus-pet-heading span { font-size: 9px; opacity: .82; }
+.payplus-pet-heading strong { font-size: 14px; }
+.payplus-pet-heading span { color: #a9c8e8; font-size: 10px; }
 .payplus-pet-heading button { border: 0; color: white; background: transparent; font-size: 20px; cursor: pointer; }
-.payplus-pet-messages { display: grid; gap: 8px; max-height: 260px; overflow: auto; padding: 13px; }
+.payplus-pet-messages { display: grid; gap: 9px; max-height: 390px; overflow: auto; padding: 16px; }
 .payplus-pet-messages p { margin: 0; font-size: 10px; line-height: 1.5; }
-.payplus-pet-welcome, .payplus-pet-message.assistant { padding: 8px 10px; border-radius: 8px; color: #536680; background: #f3f6fb; }
+.payplus-pet-welcome, .payplus-pet-message.assistant { padding: 10px 12px; border-radius: 9px; color: #d6e2f3; background: #1b2a40; }
 .payplus-pet-message.user { justify-self: end; max-width: 85%; padding: 8px 10px; border-radius: 8px; color: white; background: #3569c8; }
-.payplus-pet-result { display: block; padding: 8px 10px; color: #2858aa; border: 1px solid #dce6f7; border-radius: 7px; background: #fbfcff; font-size: 10px; text-decoration: none; }
-.payplus-pet-form { display: flex; gap: 7px; padding: 10px; border-top: 1px solid var(--line); }
-.payplus-pet-form input { min-width: 0; flex: 1; padding: 8px 9px; color: var(--ink); border: 1px solid var(--line); border-radius: 6px; font: inherit; font-size: 10px; }
-.payplus-pet-form button { padding: 0 10px; color: white; border: 0; border-radius: 6px; background: #3569c8; font-size: 10px; cursor: pointer; }
+.payplus-pet-result { display: grid; gap: 4px; padding: 11px 12px; color: #dceaff; border: 1px solid #38567c; border-radius: 9px; background: #17263b; font-size: 10px; text-decoration: none; }
+.payplus-pet-result strong { color: #f2f7ff; font-size: 11px; }
+.payplus-pet-result b { color: #6ee7c8; font-size: 12px; }
+.payplus-pet-result span { color: #9eb2cc; font-size: 9px; }
+.payplus-pet-form { display: flex; gap: 8px; padding: 12px; border-top: 1px solid #33435d; }
+.payplus-pet-form input { min-width: 0; flex: 1; padding: 10px 11px; color: #eef5ff; border: 1px solid #405575; border-radius: 8px; background: #18263a; font: inherit; font-size: 11px; }
+.payplus-pet-form button { padding: 0 13px; color: #0d1c28; border: 0; border-radius: 8px; background: #6ee7c8; font-size: 11px; font-weight: 700; cursor: pointer; }
 .shopping-results { display: grid; gap: 8px; margin: 0 0 12px 38px; }
-.shopping-card { display: grid; gap: 3px; padding: 9px 10px; color: #2858aa; border: 1px solid #dce6f7; border-radius: 7px; background: #fbfcff; text-decoration: none; }
+.shopping-card { display: grid; gap: 4px; padding: 10px 11px; color: #dceaff; border: 1px solid #38567c; border-radius: 8px; background: #17263b; text-decoration: none; }
 .shopping-card strong { font-size: 10px; }
-.shopping-card span { color: #6c7b91; font-size: 9px; }
+.shopping-card b { color: #6ee7c8; font-size: 11px; }
+.shopping-card span { color: #9eb2cc; font-size: 9px; }
 @media (max-width: 520px) { .payplus-pet-button { right: 14px; bottom: 14px; } .payplus-pet-panel { right: 14px; bottom: 78px; } }

@@ -57,9 +57,11 @@ function appendShoppingResults(data) {
 		card.rel = "noopener noreferrer";
 		const title = document.createElement("strong");
 		title.textContent = item.title;
+		const price = document.createElement("b");
+		price.textContent = item.price || "Price shown on listing";
 		const note = document.createElement("span");
 		note.textContent = item.paypal_note;
-		card.append(title, note);
+		card.append(title, price, note);
 		group.append(card);
 	}
 	chatHistory.append(group);
