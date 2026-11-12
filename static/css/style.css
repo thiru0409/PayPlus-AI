@@ -979,7 +979,7 @@
 .payplus-pet-button { position: fixed; right: 22px; bottom: 22px; z-index: 50; display: grid; place-items: center; width: 52px; height: 52px; border: 0; border-radius: 50%; color: white; background: #3569c8; box-shadow: 0 8px 24px rgb(35 71 140 / 28%); cursor: pointer; }
 .payplus-pet-button svg { width: 27px; height: 27px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
 .payplus-pet-button:hover { transform: translateY(-2px); }
-.payplus-pet-panel { position: fixed; right: 22px; bottom: 86px; z-index: 50; display: grid; width: min(430px, calc(100vw - 28px)); overflow: hidden; border: 1px solid #33435d; border-radius: 16px; background: #111b2b; box-shadow: 0 20px 60px rgb(6 12 24 / 42%); }
+.payplus-pet-panel { position: fixed; right: 22px; bottom: 86px; z-index: 50; display: grid; width: min(520px, calc(100vw - 28px)); overflow: hidden; border: 1px solid #33435d; border-radius: 16px; background: #111b2b; box-shadow: 0 20px 60px rgb(6 12 24 / 42%); }
 .payplus-pet-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px; color: #f5f8ff; background: linear-gradient(135deg, #1b2c48, #243d68); }
 .payplus-pet-heading div { display: grid; gap: 2px; }
 .payplus-pet-heading strong { font-size: 14px; }
@@ -990,6 +990,7 @@
 .payplus-pet-welcome, .payplus-pet-message.assistant { padding: 10px 12px; border-radius: 9px; color: #d6e2f3; background: #1b2a40; }
 .payplus-pet-message.user { justify-self: end; max-width: 85%; padding: 8px 10px; border-radius: 8px; color: white; background: #3569c8; }
 .payplus-pet-result { display: grid; gap: 4px; padding: 11px 12px; color: #dceaff; border: 1px solid #38567c; border-radius: 9px; background: #17263b; font-size: 10px; text-decoration: none; }
+.payplus-pet-result img, .shopping-card img { width: 100%; height: 120px; object-fit: cover; border-radius: 7px; background: #0b1320; }
 .payplus-pet-result strong { color: #f2f7ff; font-size: 11px; }
 .payplus-pet-result b { color: #6ee7c8; font-size: 12px; }
 .payplus-pet-result span { color: #9eb2cc; font-size: 9px; }

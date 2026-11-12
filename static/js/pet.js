@@ -56,6 +56,13 @@ petForm.addEventListener("submit", async (event) => {
 			link.target = "_blank";
 			link.rel = "noopener noreferrer";
 		link.innerHTML = `<strong></strong><b></b><span></span>`;
+		if (result.image_url) {
+			const image = document.createElement("img");
+			image.src = result.image_url;
+			image.alt = result.title;
+			image.loading = "lazy";
+			link.prepend(image);
+		}
 		link.querySelector("strong").textContent = result.title;
 		link.querySelector("b").textContent = result.price || "Price shown on listing";
 		link.querySelector("span").textContent = result.paypal_note;

@@ -47,6 +47,7 @@ def _live_results(query: str) -> list[dict]:
 		root = ET.fromstring(response.text)
 	except (requests.RequestException, ET.ParseError):
 		return []
+	image_urls = _image_urls(query)
 	results = []
 	for item in root.findall("./channel/item")[:8]:
 		title = unescape((item.findtext("title") or "").strip())
@@ -60,9 +61,24 @@ def _live_results(query: str) -> list[dict]:
 				"title": title,
 				"url": url,
 				"price": _price_from_text(f"{title} {description}"),
+				"image_url": image_urls[len(results)] if len(results) < len(image_urls) else "",
 				"paypal_note": "Confirm PayPal and shipping availability at checkout.",
 			})
 	return results
+
+
+def _image_urls(query: str) -> list[str]:
+	try:
+		response = requests.get(
+			"https://www.bing.com/images/search",
+			params={"q": query},
+			headers={"User-Agent": "PayPlus/1.0"},
+			timeout=10,
+		)
+		markup = unescape(response.text)
+		return [url.replace("\\/", "/") for url in re.findall(r'"turl":"(https?://.*?)"', markup)[:8]]
+	except requests.RequestException:
+		return []
 
 
 def search_product_links(question: str) -> dict:
@@ -72,6 +88,7 @@ def search_product_links(question: str) -> dict:
 	live_results = _live_results(query)
 	if live_results:
 		return {"query": query, "results": live_results, "live": True}
+	image_urls = _image_urls(query)
 	return {
 		"query": query,
 		"live": False,
@@ -81,8 +98,9 @@ def search_product_links(question: str) -> dict:
 				"title": f"Search {marketplace} for {query}",
 				"url": template.format(query=encoded),
 				"price": "Open listings for live prices",
+				"image_url": image_urls[index] if index < len(image_urls) else "",
 				"paypal_note": "Check the seller's checkout for PayPal availability.",
 			}
-			for marketplace, template in MARKETPLACES
+			for index, (marketplace, template) in enumerate(MARKETPLACES)
 		],
 	}

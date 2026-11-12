@@ -55,6 +55,13 @@ function appendShoppingResults(data) {
 		card.href = item.url;
 		card.target = "_blank";
 		card.rel = "noopener noreferrer";
+		if (item.image_url) {
+			const image = document.createElement("img");
+			image.src = item.image_url;
+			image.alt = item.title;
+			image.loading = "lazy";
+			card.append(image);
+		}
 		const title = document.createElement("strong");
 		title.textContent = item.title;
 		const price = document.createElement("b");
